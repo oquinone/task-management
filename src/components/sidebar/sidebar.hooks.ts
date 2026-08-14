@@ -31,14 +31,16 @@ export const useSidebarHooks = () => {
     }
 
     store.setProjectId(currentObject.id);
-    const url: string = `${urls.getProjectData}?id=${currentObject.id}`;
+    const url: string = `${urls.getProjectData}${currentObject.id}`;
     const data: any = await GetAPICall({ url });
+
     const structredData = {
-      id: data.id,
-      columns: data.columns.columns,
-      columnOrder: data.columns.columnOrder,
-      tasks: data.tasks.tasks,
+      id: data.project_id,
+      columns: data.columns,
+      columnOrder: data.columns.order,
+      tasks: data.columns.tasks,
     };
+    console.log(`${JSON.stringify(structredData)}`);
     store.setSelectedProject(structredData);
   };
 

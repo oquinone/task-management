@@ -27,50 +27,36 @@ export const useTaskHooks = () => {
 
   const updateTask = async (id: string) => {
     const data = {
-      id: store.projectId,
-      task: {
-        content: taskData.summary,
-        description: taskData.description,
-        date: taskData.date,
-        priority: taskData.priority,
-        id,
-      },
+      content: taskData.summary,
+      description: taskData.description,
+      date: taskData.date
+        ? new Date(taskData.date).toISOString().split("T")[0]
+        : taskData.date,
+      priority: taskData.priority,
     };
 
-    await PutAPICall({ url: urls.updateTask, data });
-    const url: string = `${urls.getProjectData}?id=${store.projectId}`;
+    await PutAPICall({ url: `${urls.updateTask}/${id}`, data });
+    const url: string = `${urls.getProjectData}${store.projectId}`;
     const res: any = await GetAPICall({ url });
     const structredData = {
       id: res.id,
-      columns: res.columns.columns,
-      columnOrder: res.columns.columnOrder,
-      tasks: res.tasks.tasks,
+      columns: res.columns,
+      tasks: res.tasks,
     };
     store.setSelectedProject(structredData);
     setTaskModal(false);
   };
 
   const removeTask = async (props: any) => {
-    const { taskId, columnId } = props || {};
-    const taskData = {
-      id: store.projectId,
-      taskId,
-    };
+    const { taskId } = props || {};
 
-    const columnData = {
-      ...taskData,
-      columnName: columnId,
-    };
-
-    await DeleteAPICall({ url: urls.removeTask, data: taskData });
-    await DeleteAPICall({ url: urls.removeTaskFromTaskIds, data: columnData });
-    const url: string = `${urls.getProjectData}?id=${store.projectId}`;
+    await DeleteAPICall({ url: `${urls.removeTask}/${taskId}` });
+    const url: string = `${urls.getProjectData}${store.projectId}`;
     const res: any = await GetAPICall({ url });
     const structredData = {
       id: res.id,
-      columns: res.columns.columns,
-      columnOrder: res.columns.columnOrder,
-      tasks: res.tasks.tasks,
+      columns: res.columns,
+      tasks: res.tasks,
     };
     store.setSelectedProject(structredData);
     setTaskModal(false);

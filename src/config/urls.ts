@@ -1,17 +1,19 @@
-export const urlsTemp: any = {
-  getProjectTitles: "http://localhost:8080/projects",
-  getProjectData: "http://localhost:8080/getProjectData",
-  addProject: "http://localhost:8080/addProject",
-  addTask: "http://localhost:8080/addTask",
-  addColumn: "http://localhost:8080/addColumn",
-  removeProject: "http://localhost:8080/removeProject",
-  replaceColumns: "http://localhost:8080/replaceColumns",
-  updateTask: "http://localhost:8080/updateTask",
-  removeTask: "http://localhost:8080/removeTask",
-  removeTaskFromTaskIds: "http://localhost:8080/removeTaskId",
+export const urls: any = {
+  getProjectTitles: "http://127.0.0.1:8000/api/projects/",
+  getProjectData: "http://127.0.0.1:8000/api/getProjectData/",
+  addProject: "http://127.0.0.1:8000/api/addProject/",
+  addTask: "http://127.0.0.1:8000/api/addTask",
+  addColumn: "http://127.0.0.1:8000/api/addColumn",
+  removeProject: "http://127.0.0.1:8000/api/deleteProject",
+  replaceColumns: "http://127.0.0.1:8000/api/replaceColumns",
+  updateTask: "http://127.0.0.1:8000/api/updateTask",
+  removeTask: "http://127.0.0.1:8000/api/removeTask",
+  updateTaskColumnAndOrder: "http://127.0.0.1:8000/api/taskPlacement",
+  updateTaskBulkOrder: "http://127.0.0.1:8000/api/updateTaskOrder"
+  // removeTaskFromTaskIds: "http://localhost:8080/removeTaskId",
 };
 
-export const urls: any = {
+export const urlTemp: any = {
   getProjectTitles:
     "https://task-management-8-373727b1fdd3.herokuapp.com/projects",
   getProjectData:

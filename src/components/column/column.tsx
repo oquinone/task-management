@@ -25,9 +25,9 @@ const ColumnComponent = (props: any) => {
           store.theme === colorThemes.lightTheme ? "text-black" : "text-white"
         }`}
       >
-        {column.title}
+        {column.name}
       </h2>
-      <Droppable droppableId={column.id}>
+      <Droppable droppableId={`column-${column.id}`}>
         {(provided) => (
           <div
             className="flex-grow w-[200px] rounded-lg min-h-[20px] overflow-y-auto hidescrollbar"

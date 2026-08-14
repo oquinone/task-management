@@ -21,13 +21,16 @@ const DragAndDropComponent = () => {
               }`,
             }}
           >
-            {data?.columnOrder?.map((columnId: string) => {
-              const column: any = data.columns[columnId];
-              const tasks: any = column.taskIds.map(
-                (taskId: string) => data.tasks[taskId]
-              );
+            {data?.columns?.map((columnData: any) => {
+              const column: any = columnData;
+              const tasks: any =
+                column?.tasks?.map((task: string) => task) || [];
               return (
-                <ColumnComponent key={columnId} column={column} tasks={tasks} />
+                <ColumnComponent
+                  key={columnData.id}
+                  column={column}
+                  tasks={tasks}
+                />
               );
             })}
           </section>
