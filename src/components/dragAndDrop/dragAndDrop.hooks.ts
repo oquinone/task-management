@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../store/store";
-import { GetAPICall, PutAPICall } from "../../apis/apis";
+import { PutAPICall } from "../../apis/apis";
 import { urls } from "../../config/urls";
 
 interface DragAndDrop {
