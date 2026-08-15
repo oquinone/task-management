@@ -13,15 +13,15 @@ export const urlsTemp: any = {
 };
 
 export const urls: any = {
-  getProjectTitles: "https://task-management-8-373727b1fdd3.herokuapp.com/api/projects/",
-  getProjectData: "https://task-management-8-373727b1fdd3.herokuapp.com/api/getProjectData/",
-  addProject: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addProject/",
-  addTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addTask",
-  addColumn: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addColumn",
-  removeProject: "https://task-management-8-373727b1fdd3.herokuapp.com/api/deleteProject",
-  replaceColumns: "https://task-management-8-373727b1fdd3.herokuapp.com/api/replaceColumns",
-  updateTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/updateTask",
-  removeTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/removeTask",
-  updateTaskColumnAndOrder: "https://task-management-8-373727b1fdd3.herokuapp.com/api/taskPlacement",
-  updateTaskBulkOrder: "https://task-management-8-373727b1fdd3.herokuapp.com/api/updateTaskOrder"
+  getProjectTitles: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/projects/",
+  getProjectData: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/getProjectData/",
+  addProject: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/addProject/",
+  addTask: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/addTask",
+  addColumn: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/addColumn",
+  removeProject: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/deleteProject",
+  replaceColumns: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/replaceColumns",
+  updateTask: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/updateTask",
+  removeTask: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/removeTask",
+  updateTaskColumnAndOrder: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/taskPlacement",
+  updateTaskBulkOrder: "https://task-django-be-6c5e64cf5f40.herokuapp.com/api/updateTaskOrder"
 };
