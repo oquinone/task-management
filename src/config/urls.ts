@@ -1,4 +1,4 @@
-export const urls: any = {
+export const urlsTemp: any = {
   getProjectTitles: "http://127.0.0.1:8000/api/projects/",
   getProjectData: "http://127.0.0.1:8000/api/getProjectData/",
   addProject: "http://127.0.0.1:8000/api/addProject/",
@@ -10,23 +10,18 @@ export const urls: any = {
   removeTask: "http://127.0.0.1:8000/api/removeTask",
   updateTaskColumnAndOrder: "http://127.0.0.1:8000/api/taskPlacement",
   updateTaskBulkOrder: "http://127.0.0.1:8000/api/updateTaskOrder"
-  // removeTaskFromTaskIds: "http://localhost:8080/removeTaskId",
 };
 
-export const urlTemp: any = {
-  getProjectTitles:
-    "https://task-management-8-373727b1fdd3.herokuapp.com/projects",
-  getProjectData:
-    "https://task-management-8-373727b1fdd3.herokuapp.com/getProjectData",
-  addProject: "https://task-management-8-373727b1fdd3.herokuapp.com/addProject",
-  addTask: "https://task-management-8-373727b1fdd3.herokuapp.com/addTask",
-  addColumn: "https://task-management-8-373727b1fdd3.herokuapp.com/addColumn",
-  removeProject:
-    "https://task-management-8-373727b1fdd3.herokuapp.com/removeProject",
-  replaceColumns:
-    "https://task-management-8-373727b1fdd3.herokuapp.com/replaceColumns",
-  updateTask: "https://task-management-8-373727b1fdd3.herokuapp.com/updateTask",
-  removeTask: "https://task-management-8-373727b1fdd3.herokuapp.com/removeTask",
-  removeTaskFromTaskIds:
-    "https://task-management-8-373727b1fdd3.herokuapp.com/removeTaskId",
+export const urls: any = {
+  getProjectTitles: "https://task-management-8-373727b1fdd3.herokuapp.com/api/projects/",
+  getProjectData: "https://task-management-8-373727b1fdd3.herokuapp.com/api/getProjectData/",
+  addProject: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addProject/",
+  addTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addTask",
+  addColumn: "https://task-management-8-373727b1fdd3.herokuapp.com/api/addColumn",
+  removeProject: "https://task-management-8-373727b1fdd3.herokuapp.com/api/deleteProject",
+  replaceColumns: "https://task-management-8-373727b1fdd3.herokuapp.com/api/replaceColumns",
+  updateTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/updateTask",
+  removeTask: "https://task-management-8-373727b1fdd3.herokuapp.com/api/removeTask",
+  updateTaskColumnAndOrder: "https://task-management-8-373727b1fdd3.herokuapp.com/api/taskPlacement",
+  updateTaskBulkOrder: "https://task-management-8-373727b1fdd3.herokuapp.com/api/updateTaskOrder"
 };
