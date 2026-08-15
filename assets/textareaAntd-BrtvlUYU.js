@@ -1,1 +1,0 @@
-import{Y as u}from"./index-BcWiSZV8.js";import{I as c}from"./index-9nqR2IpI.js";const{TextArea:m}=c,f=t=>{const{placeholder:e="",value:a="",onChange:o=null,allowClear:s=!1,className:r="",autoSize:l={},style:n={}}=t||{},p={placeholder:e,value:a,onChange:o,allowClear:s,className:r,autoSize:l,style:n};return u.jsx(m,{...p})};export{f as default};
