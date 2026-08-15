@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../../store/store";
-import { GetAPICall, PutAPICall } from "../../apis/apis";
+import { PutAPICall } from "../../apis/apis";
 import { urls } from "../../config/urls";
 
 interface DragAndDrop {
@@ -20,6 +20,10 @@ export const useDragAndDropHooks = () => {
   const onDragEnd = async (result: any) => {
     // TODO: reorder our column
     const { destination, source, draggableId } = result;
+    console.log(`Omar - result: ${JSON.stringify(data)}`);
+    const sourceId = source.droppableId.split('-')[1];
+    const desId    = destination.droppableId.split('-')[1];
+    const dragId   = Number(draggableId.split('-')[1]); 
 
     if (!destination) {
       return;
@@ -31,71 +35,49 @@ export const useDragAndDropHooks = () => {
     ) {
       return;
     }
+    // console.log(`Ha - sourceid: ${JSON.stringify(sourceId)}`);
+    // const start = data?.columns.filter((item: any) => item.id == sourceId);
+    // const finish = data?.columns.filter((item: any) => item.id == desId);
 
-    const start = data?.columns[source.droppableId];
-    const finish = data?.columns[destination.droppableId];
 
-    if (start === finish) {
-      const newTaskIds = Array.from(start.taskIds);
-      newTaskIds.splice(source.index, 1);
-      newTaskIds.splice(destination.index, 0, draggableId);
+    if (sourceId === desId) {
+      const sourceColIdx = data?.columns.findIndex((item:any) => item.id == sourceId);
+      const taskToMove = data?.columns[sourceColIdx].tasks.splice(source.index, 1);
+      
+      data?.columns[sourceColIdx].tasks.splice(destination.index, 0, taskToMove[0]);
+      data?.columns[sourceColIdx].tasks.forEach((task:any, idx: number) => task.order = idx);
+      
+      let newStruct:any ={
+        ...data
+      }
+      setData({...newStruct});
+      await PutAPICall({ url: urls.updateTaskBulkOrder, data: { tasks: data?.columns[sourceColIdx].tasks } });
 
-      const newColumn = {
-        ...start,
-        taskIds: newTaskIds,
-      };
-
-      const newState: any = {
-        ...data,
-        columns: {
-          ...data?.columns,
-          [newColumn.id]: newColumn,
-        },
-      };
-
-      setData(newState);
       return;
     }
 
-    // Moving from one list to another list
-    const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      taskIds: startTaskIds,
-    };
 
-    const finishTaskIds = Array.from(finish.taskIds);
-    finishTaskIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      taskIds: finishTaskIds,
-    };
+    // Get data, find source tasks
+    const sourceColIdx = data?.columns.findIndex((item:any) => item.id == sourceId);
+    const destinationColIdx = data?.columns.findIndex((item:any) => item.id == desId);
 
-    const newState: any = {
-      ...data,
-      columns: {
-        ...data?.columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
-    setData(newState);
-    let col = {
-      columns: newState.columns,
-      columnOrder: newState.columnOrder,
-      id: newState.id,
-    };
-    await PutAPICall({ url: urls.replaceColumns, data: { ...col } });
-    const url: string = `${urls.getProjectData}?id=${store.projectId}`;
-    const res: any = await GetAPICall({ url });
-    const structredData = {
-      id: res.id,
-      columns: res.columns.columns,
-      columnOrder: res.columns.columnOrder,
-      tasks: res.tasks.tasks,
-    };
-    store.setSelectedProject(structredData);
+    // get task
+    const taskToMove = data?.columns[sourceColIdx].tasks.splice(source.index, 1);
+    data?.columns[destinationColIdx].tasks.splice(destination.index, 0, taskToMove[0]);
+
+    let updatedColumn:any ={
+      ...data
+    }
+    setData(updatedColumn);
+
+    // Update column and order 
+    const updateTask ={
+      column: desId,
+      order: destination.index
+    }
+
+    await PutAPICall({ url: `${urls.updateTaskColumnAndOrder}/${dragId}`, data: { ...updateTask } });
+   
   };
 
   return { data, setData, onDragEnd, store };

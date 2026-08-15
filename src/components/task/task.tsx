@@ -32,7 +32,7 @@ const TaskComponent = (props: any) => {
   } = useTaskHooks();
   return (
     <>
-      <Draggable draggableId={task.id} index={index}>
+      <Draggable draggableId={`task-${task.id}`} index={index}>
         {(provided) => (
           <div
             className=" min-h-[80px] mb-[10px]"

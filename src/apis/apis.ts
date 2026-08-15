@@ -27,6 +27,9 @@ export const PostAPICall = async (props: any) => {
   let moreOptions = {
     method: "POST",
     body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
     ...options,
   };
 
@@ -41,6 +44,9 @@ export const PutAPICall = async (props: any) => {
 
   let moreOptions = {
     method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(data),
     ...options,
   };
